@@ -1,10 +1,10 @@
 # trifuse
 
-> 📚 Portfolio map: https://github.com/open-infra-ai/open-infra-ai
+> 📚 Portfolio map: https://github.com/holtwood-systems/portfolio
 
 > **面向 Transformer 推理的可验证 Triton 融合算子与 `torch.library` 集成。**
 
-[![CI](https://github.com/open-infra-ai/trifuse/actions/workflows/ci.yml/badge.svg)](https://github.com/open-infra-ai/trifuse/actions/workflows/ci.yml)
+[![CI](https://github.com/holtwood-systems/trifuse/actions/workflows/ci.yml/badge.svg)](https://github.com/holtwood-systems/trifuse/actions/workflows/ci.yml)
 
 > 状态：**stable**。当前源码包与 GitHub 最新 Release/Tag 均为 `2.0.1`；
 > 新功能暂停，继续维护正确性、兼容性与可复现验证。
@@ -15,7 +15,7 @@
 - `fused_gated_mlp`：标准 SwiGLU/GeGLU，公式为 `activation(gate_proj(x)) * up_proj(x)`
 - `flash_attention`：带在线 softmax 的 FlashAttention 前向，支持 causal mask
 
-> ℹ️ **定位**：Triton FlashAttention 是 [cuflash](https://github.com/open-infra-ai/cuflash)
+> ℹ️ **定位**：Triton FlashAttention 是 [cuflash](https://github.com/holtwood-systems/cuflash)
 > 的独立参考实现，用于验证 CUDA C++ 版本的正确性。完整 FlashAttention 前后向 +
 > 优化叙事见 cuflash（本仓库只保留前向参考实现）。
 
@@ -154,10 +154,10 @@ gelu 使用精确 erf 定义；fp32 输入路径禁用 TF32 截断。数值正�
 
 这个仓库练习 Triton kernel 与验证方法，不承担以下职责：
 
-- CUDA C++ 的系统学习路径：[`cuda-foundations`](https://github.com/open-infra-ai/cuda-foundations)
-- FlashAttention 前后向的 CUDA C++ 深挖：[`cuflash`](https://github.com/open-infra-ai/cuflash)
-- 完整模型加载与 token 生成：[`tiny-llm`](https://github.com/open-infra-ai/tiny-llm)
-- Paged KV 与 continuous batching 控制面：[`paged-serving`](https://github.com/open-infra-ai/paged-serving)
+- CUDA C++ 的系统学习路径：[`cuda-foundations`](https://github.com/holtwood-systems/cuda-foundations)
+- FlashAttention 前后向的 CUDA C++ 深挖：[`cuflash`](https://github.com/holtwood-systems/cuflash)
+- 完整模型加载与 token 生成：[`tiny-llm`](https://github.com/holtwood-systems/tiny-llm)
+- Paged KV 与 continuous batching 控制面：[`paged-serving`](https://github.com/holtwood-systems/paged-serving)
 
 新 kernel 只有在具备独立参考实现、边界测试和真实 GPU 验证计划时才进入主分支。未在当前硬件上测量的性能数字不会写入 README。
 

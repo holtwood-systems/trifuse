@@ -48,10 +48,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/open-infra-ai/trifuse"
-Repository = "https://github.com/open-infra-ai/trifuse.git"
-Issues = "https://github.com/open-infra-ai/trifuse/issues"
-Changelog = "https://github.com/open-infra-ai/trifuse/blob/master/CHANGELOG.md"
+Homepage = "https://github.com/holtwood-systems/trifuse"
+Repository = "https://github.com/holtwood-systems/trifuse.git"
+Issues = "https://github.com/holtwood-systems/trifuse/issues"
+Changelog = "https://github.com/holtwood-systems/trifuse/blob/master/CHANGELOG.md"
 
 [project.optional-dependencies]
 dev = [
