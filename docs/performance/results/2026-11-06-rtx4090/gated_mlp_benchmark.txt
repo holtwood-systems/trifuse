@@ -1,0 +1,77 @@
+================================================================================
+ Triton Operators Benchmark Report
+================================================================================
+Generated: 2026-11-06 02:17:55
+
+System Information:
+  device: NVIDIA GeForce RTX 4090
+  cuda_version: 12.8
+  pytorch_version: 2.7.1+cu128
+
+--------------------------------------------------------------------------------
+ Benchmark Results
+--------------------------------------------------------------------------------
+
+fused_gated_mlp_silu
+  Problem size: (1, 128, 4096, 11264)
+  Latency: 0.748 ms
+  Throughput: 31.60 TFLOPS
+  Bandwidth: 252.1 GB/s (12.4%)
+  Correct: ✓
+
+fused_gated_mlp_gelu
+  Problem size: (1, 128, 4096, 11264)
+  Latency: 0.747 ms
+  Throughput: 31.61 TFLOPS
+  Bandwidth: 252.3 GB/s (12.4%)
+  Correct: ✓
+
+fused_gated_mlp_silu
+  Problem size: (1, 512, 4096, 11264)
+  Latency: 3.095 ms
+  Throughput: 30.53 TFLOPS
+  Bandwidth: 64.7 GB/s (3.2%)
+  Correct: ✓
+
+fused_gated_mlp_gelu
+  Problem size: (1, 512, 4096, 11264)
+  Latency: 3.050 ms
+  Throughput: 30.98 TFLOPS
+  Bandwidth: 65.7 GB/s (3.2%)
+  Correct: ✓
+
+fused_gated_mlp_silu
+  Problem size: (4, 128, 4096, 11264)
+  Latency: 2.972 ms
+  Throughput: 31.79 TFLOPS
+  Bandwidth: 67.4 GB/s (3.3%)
+  Correct: ✓
+
+fused_gated_mlp_gelu
+  Problem size: (4, 128, 4096, 11264)
+  Latency: 3.351 ms
+  Throughput: 28.20 TFLOPS
+  Bandwidth: 59.8 GB/s (2.9%)
+  Correct: ✓
+
+fused_gated_mlp_silu
+  Problem size: (4, 512, 4096, 11264)
+  Latency: 17.377 ms
+  Throughput: 21.75 TFLOPS
+  Bandwidth: 14.2 GB/s (0.7%)
+  Correct: ✓
+
+fused_gated_mlp_gelu
+  Problem size: (4, 512, 4096, 11264)
+  Latency: 18.673 ms
+  Throughput: 20.24 TFLOPS
+  Bandwidth: 13.3 GB/s (0.6%)
+  Correct: ✓
+
+--------------------------------------------------------------------------------
+ Summary
+--------------------------------------------------------------------------------
+Total benchmarks: 8
+Correct: 8/8
+
+================================================================================

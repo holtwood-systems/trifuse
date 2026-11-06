@@ -1,0 +1,318 @@
+{
+  "title": "Triton Operators Benchmark Report",
+  "generated": "2026-11-06T02:17:42.692346",
+  "metadata": {
+    "device": "NVIDIA GeForce RTX 4090",
+    "cuda_version": "12.8",
+    "pytorch_version": "2.7.1+cu128"
+  },
+  "results": [
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        1,
+        128,
+        2048
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.046741142868995667,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 22.433683381232456,
+        "bandwidth_utilization": 1.1002296901045834
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:41.649920"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        1,
+        128,
+        4096
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.04586070775985718,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 45.72873168424322,
+        "bandwidth_utilization": 2.242703858962394
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:41.656130"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        1,
+        512,
+        2048
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.04417940974235535,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 94.93798184403693,
+        "bandwidth_utilization": 4.656105043846833
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:41.681766"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        1,
+        512,
+        4096
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.04312008619308472,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 194.54061298572506,
+        "bandwidth_utilization": 9.540981509844288
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:41.687682"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        1,
+        2048,
+        2048
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.048470571637153625,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 346.1320020236762,
+        "bandwidth_utilization": 16.97557636212242
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:41.694304"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        1,
+        2048,
+        4096
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.09488686919212341,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 353.62566270429085,
+        "bandwidth_utilization": 17.34309282512461
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:41.706402"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        4,
+        128,
+        2048
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.1407075673341751,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 29.808659757713585,
+        "bandwidth_utilization": 1.4619254417711418
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:42.325577"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        4,
+        128,
+        4096
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.12349277734756468,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 67.92792404685055,
+        "bandwidth_utilization": 3.3314332538916407
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:42.341303"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        4,
+        512,
+        2048
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.10435909032821655,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 160.76429899143903,
+        "bandwidth_utilization": 7.884467826946495
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:42.354457"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        4,
+        512,
+        4096
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.09672969579696655,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 346.88863356326476,
+        "bandwidth_utilization": 17.012684333656928
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:42.366887"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        4,
+        2048,
+        2048
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.15428319573402405,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 434.9719597181023,
+        "bandwidth_utilization": 21.332612050912324
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:42.388032"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        4,
+        2048,
+        4096
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.4141271859407425,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 324.0978437460158,
+        "bandwidth_utilization": 15.89494084090318
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:42.441505"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        8,
+        128,
+        2048
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.05712628364562988,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 146.84322985259908,
+        "bandwidth_utilization": 7.2017278005198175
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:42.448741"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        8,
+        128,
+        4096
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.056474655866622925,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 297.07513472278634,
+        "bandwidth_utilization": 14.569648588660439
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:42.455801"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        8,
+        512,
+        2048
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.07812313735485077,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 429.50696984414645,
+        "bandwidth_utilization": 21.06458900657903
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:42.465678"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        8,
+        512,
+        4096
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.15320293605327606,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 438.0390201964733,
+        "bandwidth_utilization": 21.483031888007517
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:42.486131"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        8,
+        2048,
+        2048
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.37623345851898193,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 356.7405422376287,
+        "bandwidth_utilization": 17.495857883159818
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:42.536350"
+    },
+    {
+      "kernel_name": "fused_rmsnorm_rope",
+      "problem_size": [
+        8,
+        2048,
+        4096
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.7458796352148056,
+        "throughput_tflops": 0.0,
+        "bandwidth_gbps": 359.8911182535415,
+        "bandwidth_utilization": 17.65037362695152
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:42.691947"
+    }
+  ],
+  "comparisons": []
+}

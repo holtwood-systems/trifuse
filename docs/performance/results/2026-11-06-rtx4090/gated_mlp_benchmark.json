@@ -1,0 +1,156 @@
+{
+  "title": "Triton Operators Benchmark Report",
+  "generated": "2026-11-06T02:17:55.923157",
+  "metadata": {
+    "device": "NVIDIA GeForce RTX 4090",
+    "cuda_version": "12.8",
+    "pytorch_version": "2.7.1+cu128"
+  },
+  "results": [
+    {
+      "kernel_name": "fused_gated_mlp_silu",
+      "problem_size": [
+        1,
+        128,
+        4096,
+        11264
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.7476047426462173,
+        "throughput_tflops": 31.597338513913883,
+        "bandwidth_gbps": 252.11388484890006,
+        "bandwidth_utilization": 12.364584838102013
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:48.789910"
+    },
+    {
+      "kernel_name": "fused_gated_mlp_gelu",
+      "problem_size": [
+        1,
+        128,
+        4096,
+        11264
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 0.7471900433301926,
+        "throughput_tflops": 31.614875410700574,
+        "bandwidth_gbps": 252.25381103841565,
+        "bandwidth_utilization": 12.37144732900518
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:49.334211"
+    },
+    {
+      "kernel_name": "fused_gated_mlp_silu",
+      "problem_size": [
+        1,
+        512,
+        4096,
+        11264
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 3.095010071992874,
+        "throughput_tflops": 30.529555094842856,
+        "bandwidth_gbps": 64.70997229131508,
+        "bandwidth_utilization": 3.173613157985046
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:49.682507"
+    },
+    {
+      "kernel_name": "fused_gated_mlp_gelu",
+      "problem_size": [
+        1,
+        512,
+        4096,
+        11264
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 3.0503007769584656,
+        "throughput_tflops": 30.977037158354502,
+        "bandwidth_gbps": 65.65844834478993,
+        "bandwidth_utilization": 3.2201298844919046
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:50.025076"
+    },
+    {
+      "kernel_name": "fused_gated_mlp_silu",
+      "problem_size": [
+        4,
+        128,
+        4096,
+        11264
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 2.9719170182943344,
+        "throughput_tflops": 31.794050752544234,
+        "bandwidth_gbps": 67.39017770925014,
+        "bandwidth_utilization": 3.3050602113413508
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:51.021272"
+    },
+    {
+      "kernel_name": "fused_gated_mlp_gelu",
+      "problem_size": [
+        4,
+        128,
+        4096,
+        11264
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 3.3511319011449814,
+        "throughput_tflops": 28.196228408591093,
+        "bandwidth_gbps": 59.764289173926876,
+        "bandwidth_utilization": 2.9310588118649767
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:51.899006"
+    },
+    {
+      "kernel_name": "fused_gated_mlp_silu",
+      "problem_size": [
+        4,
+        512,
+        4096,
+        11264
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 17.377278581261635,
+        "throughput_tflops": 21.75007555300177,
+        "bandwidth_gbps": 14.24066115086897,
+        "bandwidth_utilization": 0.6984139848390863
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:53.840832"
+    },
+    {
+      "kernel_name": "fused_gated_mlp_gelu",
+      "problem_size": [
+        4,
+        512,
+        4096,
+        11264
+      ],
+      "config": {},
+      "metrics": {
+        "latency_ms": 18.67272436618805,
+        "throughput_tflops": 20.24113432169503,
+        "bandwidth_gbps": 13.25269581165668,
+        "bandwidth_utilization": 0.649960559669283
+      },
+      "correctness": true,
+      "timestamp": "2026-11-06T02:17:55.922275"
+    }
+  ],
+  "comparisons": []
+}

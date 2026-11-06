@@ -1,0 +1,147 @@
+================================================================================
+ Triton Operators Benchmark Report
+================================================================================
+Generated: 2026-11-06 02:17:42
+
+System Information:
+  device: NVIDIA GeForce RTX 4090
+  cuda_version: 12.8
+  pytorch_version: 2.7.1+cu128
+
+--------------------------------------------------------------------------------
+ Benchmark Results
+--------------------------------------------------------------------------------
+
+fused_rmsnorm_rope
+  Problem size: (1, 128, 2048)
+  Latency: 0.047 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 22.4 GB/s (1.1%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (1, 128, 4096)
+  Latency: 0.046 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 45.7 GB/s (2.2%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (1, 512, 2048)
+  Latency: 0.044 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 94.9 GB/s (4.7%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (1, 512, 4096)
+  Latency: 0.043 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 194.5 GB/s (9.5%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (1, 2048, 2048)
+  Latency: 0.048 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 346.1 GB/s (17.0%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (1, 2048, 4096)
+  Latency: 0.095 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 353.6 GB/s (17.3%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (4, 128, 2048)
+  Latency: 0.141 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 29.8 GB/s (1.5%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (4, 128, 4096)
+  Latency: 0.123 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 67.9 GB/s (3.3%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (4, 512, 2048)
+  Latency: 0.104 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 160.8 GB/s (7.9%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (4, 512, 4096)
+  Latency: 0.097 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 346.9 GB/s (17.0%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (4, 2048, 2048)
+  Latency: 0.154 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 435.0 GB/s (21.3%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (4, 2048, 4096)
+  Latency: 0.414 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 324.1 GB/s (15.9%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (8, 128, 2048)
+  Latency: 0.057 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 146.8 GB/s (7.2%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (8, 128, 4096)
+  Latency: 0.056 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 297.1 GB/s (14.6%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (8, 512, 2048)
+  Latency: 0.078 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 429.5 GB/s (21.1%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (8, 512, 4096)
+  Latency: 0.153 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 438.0 GB/s (21.5%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (8, 2048, 2048)
+  Latency: 0.376 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 356.7 GB/s (17.5%)
+  Correct: ✓
+
+fused_rmsnorm_rope
+  Problem size: (8, 2048, 4096)
+  Latency: 0.746 ms
+  Throughput: 0.00 TFLOPS
+  Bandwidth: 359.9 GB/s (17.7%)
+  Correct: ✓
+
+--------------------------------------------------------------------------------
+ Summary
+--------------------------------------------------------------------------------
+Total benchmarks: 18
+Correct: 18/18
+
+================================================================================

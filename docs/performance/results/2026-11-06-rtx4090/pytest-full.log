@@ -1,0 +1,36 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.13, pytest-9.2.0, pluggy-1.7.0
+rootdir: /data/open-infra-ai/trifuse
+configfile: pyproject.toml
+plugins: hypothesis-6.135.0, anyio-4.10.0
+collected 131 items
+
+tests/test_autotuner.py ......                                           [  4%]
+tests/test_benchmark.py ......                                           [  9%]
+tests/test_benchmark_gate.py .....                                       [ 12%]
+tests/test_compute_gated_mlp.py ............                             [ 22%]
+tests/test_compute_rmsnorm.py ...........                                [ 30%]
+tests/test_compute_rope.py ...........                                   [ 38%]
+tests/test_edge_cases.py .........                                       [ 45%]
+tests/test_flash_attention.py ........                                   [ 51%]
+tests/test_gated_mlp.py .....                                            [ 55%]
+tests/test_performance.py ...................                            [ 70%]
+tests/test_rmsnorm_rope.py ......                                        [ 74%]
+tests/test_runtime_surface.py ....                                       [ 77%]
+tests/test_sgemm.py ................F.......                             [ 96%]
+tests/test_torch_library.py .....                                        [100%]
+
+=================================== FAILURES ===================================
+_______________________________ test_sgemm_bf16 ________________________________
+tests/test_sgemm.py:68: in test_sgemm_bf16
+    assert torch.allclose(out.float(), ref.float(), rtol=1e-2, atol=1e-2)
+E   AssertionError: assert False
+E    +  where False = <built-in method allclose of type object at 0x7f2ac7ed8fa0>(tensor([[ -3.4062,  -2.2188,   8.3750,  ...,  10.3750,   8.3125,  10.7500],\n        [ -9.0000,  19.6250, -13.0000,  .....0.3750,  18.8750],\n        [ 19.8750,  18.5000,  -2.5312,  ...,   2.1719,  14.8750,   4.5312]],\n       device='cuda:0'), tensor([[ -3.4375,  -2.2188,   8.3750,  ...,  10.3750,   8.2500,  10.7500],\n        [ -9.0000,  19.5000, -13.0000,  .....0.3125,  18.8750],\n        [ 19.7500,  18.5000,  -2.5000,  ...,   2.1875,  14.8750,   4.5000]],\n       device='cuda:0'), rtol=0.01, atol=0.01)
+E    +    where <built-in method allclose of type object at 0x7f2ac7ed8fa0> = torch.allclose
+E    +    and   tensor([[ -3.4062,  -2.2188,   8.3750,  ...,  10.3750,   8.3125,  10.7500],\n        [ -9.0000,  19.6250, -13.0000,  .....0.3750,  18.8750],\n        [ 19.8750,  18.5000,  -2.5312,  ...,   2.1719,  14.8750,   4.5312]],\n       device='cuda:0') = <built-in method float of Tensor object at 0x7f29541e9550>()
+E    +      where <built-in method float of Tensor object at 0x7f29541e9550> = tensor([[ -3.4062,  -2.2188,   8.3750,  ...,  10.3750,   8.3125,  10.7500],\n        [ -9.0000,  19.6250, -13.0000,  .....     [ 19.8750,  18.5000,  -2.5312,  ...,   2.1719,  14.8750,   4.5312]],\n       device='cuda:0', dtype=torch.bfloat16).float
+E    +    and   tensor([[ -3.4375,  -2.2188,   8.3750,  ...,  10.3750,   8.2500,  10.7500],\n        [ -9.0000,  19.5000, -13.0000,  .....0.3125,  18.8750],\n        [ 19.7500,  18.5000,  -2.5000,  ...,   2.1875,  14.8750,   4.5000]],\n       device='cuda:0') = <built-in method float of Tensor object at 0x7f29541e8530>()
+E    +      where <built-in method float of Tensor object at 0x7f29541e8530> = tensor([[ -3.4375,  -2.2188,   8.3750,  ...,  10.3750,   8.2500,  10.7500],\n        [ -9.0000,  19.5000, -13.0000,  .....     [ 19.7500,  18.5000,  -2.5000,  ...,   2.1875,  14.8750,   4.5000]],\n       device='cuda:0', dtype=torch.bfloat16).float
+=========================== short test summary info ============================
+FAILED tests/test_sgemm.py::test_sgemm_bf16 - AssertionError: assert False
+======================== 1 failed, 130 passed in 6.24s =========================
