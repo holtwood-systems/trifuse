@@ -21,6 +21,18 @@
 
 仓库同时保留 NumPy/PyTorch 参考实现、输入契约、差分测试、benchmark 与 autotuner 基础设施。旧版所谓“FP8 E4M3”实际是存储在 `uint8` 中的均匀线性量化，并不编码 E4M3 指数和尾数，因此已整条删除，避免把 INT8 路径误当作 FP8 教材。
 
+## 核心亮点
+
+- **每个 kernel 都可验证**：三条算子路径 + SGEMM 全部带独立 NumPy/PyTorch 参考实现与
+  差分测试；RTX 3060 GPU 全量 **123/123 passed**（2026-08-23）。
+- **`torch.library` 集成**：`torch.ops.trifuse.*` 注册方式与 vLLM/SGLang 自定义 op 同构，
+  `register_fake` 支持接入 `torch.compile` / `torch.export`。
+- **首份带 raw 的性能结果包（RTX 4090，2026-11-06）**：`fused_rmsnorm_rope` 18/18 正确、
+  最大 shape 0.746 ms / **359.9 GB/s**（带宽型）；`fused_gated_mlp` 8/8 正确、峰值
+  **31.8 TFLOPS**（算力型）；JSON 原始样本与 pytest 全量日志归档，并诚实保留一个
+  bf16 容差失败用例，见
+  [`docs/performance/results/2026-11-06-rtx4090/report.md`](docs/performance/results/2026-11-06-rtx4090/report.md)。
+
 ## 安装
 
 ```bash
@@ -120,8 +132,10 @@ profile。
 
 ## 性能测量与引用口径
 
-本仓尚无能绑定完整环境、精确 commit 和逐次原始样本的正式性能结果包。
-历史 README 延迟表不作为当前性能证据；数值正确性测试也不构成速度优势。
+2026-11-06 起本仓有了第一份绑定完整环境、commit 与原始样本的正式结果包：
+[`docs/performance/results/2026-11-06-rtx4090/report.md`](docs/performance/results/2026-11-06-rtx4090/report.md)
+（RTX 4090 / torch 2.7.1+cu128 / Triton 3.3.1，含 JSON 原始样本与 pytest 全量日志）。
+该结果包之前的历史 README 延迟表仍不作为当前性能证据；数值正确性测试也不构成速度优势。
 
 `fused_gated_mlp` 计算 `activation(x @ gate_w.T) * (x @ up_w.T)`，输出
 `[batch, seq, intermediate]`，只有两次 GEMM，**不包含 down projection**。
@@ -149,6 +163,18 @@ python -m tests.benchmarks.bench_rmsnorm_rope
 参考实现、容差、warmup/repeats 和原始计时样本，并报告失败与回退 shape。
 gelu 使用精确 erf 定义；fp32 输入路径禁用 TF32 截断。数值正确性由
 `tests/test_gated_mlp.py` 的差分测试覆盖，指标模型和拒绝计时门禁有 CPU 回归测试。
+
+## 面试考点映射
+
+| 算子 / 决策 | 面试考点 |
+|---|---|
+| `fused_rmsnorm_rope` | 算子融合为什么省一次 HBM 往返；RoPE half-split 与 interleaved 两种布局；eps 放在 norm 内还是外 |
+| `flash_attention`（online softmax） | 分块 + running max/sum 的等价性推导；causal 边界块处理；与 SDPA 对照的容差设定 |
+| `fused_gated_mlp`（SwiGLU 契约） | 契约显式声明只有 gate/up 两次 GEMM、不含 down projection；activation 可插拔（silu/gegu） |
+| 359.9 GB/s vs 31.8 TFLOPS | 同仓两个 kernel 分别落在带宽受限与算力受限——roofline 判别的实测实例 |
+| `custom_op + register_fake` | 与 `torch.library.triton_op`（2.13+）的取舍（见上方注册策略）；torch.compile 图捕获 |
+| autotuner / `BenchmarkSuite` | block 配置搜索、warmup 与统计口径、数值验证失败时拒绝计时 |
+| bf16 SGEMM 容差失败用例 | bf16 累加顺序差异、容差如何设定、诚实保留失败不掩盖 |
 
 ## 项目边界
 
