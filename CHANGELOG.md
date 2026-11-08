@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **修复**：FlashAttention 的 launch grid 由
+  `(query_blocks, batch * heads)` 压成一维，避免 `batch * heads > 65535`
+  （CUDA `gridDim.y` 上限）时无法启动；`query_block` 仍是变化最快的维度，
+  保持同一 `(batch, head)` 的 K/V 局部性。新增 CPU 侧 grid 断言与
+  GPU 65536 并行度回归用例。
 - **Breaking**：项目全面更名为 **TriFuse**（`triton-fused-ops` → `trifuse`）：
   - Python 包名与 import 名：`triton_ops` → `trifuse`（`import trifuse`）；
   - `torch.library` op 命名空间：`torch.ops.triton_ops.*` → `torch.ops.trifuse.*`

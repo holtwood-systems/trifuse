@@ -45,6 +45,32 @@ def test_kernel_matches_reference_for_tail_blocks(causal: bool, seq_len: int):
     torch.testing.assert_close(actual, expected, rtol=2e-2, atol=2e-2)
 
 
+def test_launch_grid_keeps_batch_times_heads_out_of_grid_y():
+    """B*H > 65535 时不能把 batch*heads 放进 CUDA 的 gridDim.y。"""
+    from trifuse.kernels.flash_attention import _launch_grid
+
+    # 512 * 128 = 65536，已超过 gridDim.y 的 65535 上限。
+    assert _launch_grid(seq_len=4, batch=512, heads=128, block_m=64) == (512 * 128,)
+    # 多个 query block 时一维 grid 仍覆盖全部 (query_block, batch_head) 组合。
+    assert _launch_grid(seq_len=129, batch=2, heads=3, block_m=64) == (3 * 2 * 3,)
+
+
+@pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA not available")
+def test_kernel_launches_when_batch_times_heads_exceeds_grid_y_limit():
+    """回归：B*H = 65536 的请求不能因 gridDim.y 上限而启动失败。"""
+    from trifuse.kernels.flash_attention import flash_attention
+
+    torch.manual_seed(13)
+    q = torch.randn(512, 128, 4, 16, device="cuda", dtype=torch.float16)
+    k = torch.randn_like(q)
+    v = torch.randn_like(q)
+
+    actual = flash_attention(q, k, v, causal=False)
+    expected = reference_flash_attention(q, k, v, causal=False)
+
+    torch.testing.assert_close(actual, expected, rtol=2e-2, atol=2e-2)
+
+
 def _compiled_kernel_count(kernel):
     total = 0
     for caches in kernel.device_caches.values():

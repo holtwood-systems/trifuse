@@ -43,8 +43,13 @@ def _flash_attention_kernel(
     block_n: tl.constexpr,
     causal: tl.constexpr,
 ):
-    query_block = tl.program_id(0)
-    batch_head = tl.program_id(1)
+    # gridDim.y/z 上限是 65535，batch*heads 不能占一个 grid 维度；整张
+    # grid 压成一维，query block 连续排列，相邻 program 共享同一
+    # (batch, head) 的 K/V。
+    num_query_blocks = tl.cdiv(n_ctx, block_m)
+    pid = tl.program_id(0)
+    query_block = pid % num_query_blocks
+    batch_head = pid // num_query_blocks
     batch = batch_head // num_heads
     head = batch_head % num_heads
 
@@ -112,6 +117,17 @@ def _flash_attention_kernel(
     tl.store(out_ptrs, accumulator, mask=query_offsets[:, None] < n_ctx)
 
 
+def _launch_grid(seq_len: int, batch: int, heads: int, block_m: int) -> tuple[int, ...]:
+    """返回一维 launch grid。
+
+    CUDA 的 gridDim.y/gridDim.z 上限是 65535，把 batch*heads 放在第二维会让
+    B*H > 65535 的推理请求直接启动失败。全部 program 放进 gridDim.x
+    （上限 2**31-1）；query block 是变化最快的维度，相邻 program 复用同一
+    (batch, head) 的 K/V。
+    """
+    return (triton.cdiv(seq_len, block_m) * batch * heads,)
+
+
 def flash_attention(
     q: torch.Tensor,
     k: torch.Tensor,
@@ -127,7 +143,7 @@ def flash_attention(
 
     block_m = 64
     block_n = 64
-    grid = (triton.cdiv(seq_len, block_m), batch * heads)
+    grid = _launch_grid(seq_len, batch, heads, block_m)
     _flash_attention_kernel[grid](
         q,
         k,
