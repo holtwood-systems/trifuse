@@ -1,0 +1,23 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0
+rootdir: /home/shane/github/holtwood-system/trifuse
+configfile: pyproject.toml
+plugins: hypothesis-6.170.15
+collected 133 items
+
+tests/test_autotuner.py ......                                           [  4%]
+tests/test_benchmark.py ......                                           [  9%]
+tests/test_benchmark_gate.py .....                                       [ 12%]
+tests/test_compute_gated_mlp.py ............                             [ 21%]
+tests/test_compute_rmsnorm.py ...........                                [ 30%]
+tests/test_compute_rope.py ...........                                   [ 38%]
+tests/test_edge_cases.py .........                                       [ 45%]
+tests/test_flash_attention.py ..........                                 [ 52%]
+tests/test_gated_mlp.py .....                                            [ 56%]
+tests/test_performance.py ...................                            [ 70%]
+tests/test_rmsnorm_rope.py ......                                        [ 75%]
+tests/test_runtime_surface.py ....                                       [ 78%]
+tests/test_sgemm.py ........................                             [ 96%]
+tests/test_torch_library.py .....                                        [100%]
+
+============================= 133 passed in 4.52s ==============================
